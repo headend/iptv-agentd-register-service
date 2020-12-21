@@ -53,7 +53,7 @@ func main()  {
 		if len(res.Agents) > 0 {
 			log.Println("Agent already exists")
 			// tạo message warmup cho agent này
-			warmupMessageString, err9 := makeWarmupMessageString(res)
+			warmupMessageString, err9 := makeWarmupMessageString(res.Agents)
 			if err9 != nil {
 				log.Println(err9)
 				continue
@@ -87,10 +87,10 @@ func pushMessageToWarmup(conf configuration.Conf, warmupMessageString string) er
 	return mq.Err
 }
 
-func makeWarmupMessageString(res *agentpb.AgentResponse) (string, error) {
+func makeWarmupMessageString(agents []*agentpb.Agent) (string, error) {
 	var warmupMessage warmup.WarmupMessage
 	var warmupData []warmup.WarmupElement
-	for _, agent := range res.Agents {
+	for _, agent := range agents {
 		warupElement := warmup.WarmupElement{
 			IP:     agent.IpControl,
 			Status: true,

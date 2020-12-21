@@ -69,8 +69,9 @@ func main()  {
 		if err11 != nil {
 			log.Println(err11)
 			continue
+		} else {
+			log.Printf("Success to add new agent %#v", registerMsgData)
 		}
-		log.Printf("Success to add new agent %#v", registerMsgData)
 	}
 }
 

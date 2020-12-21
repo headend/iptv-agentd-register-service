@@ -65,5 +65,6 @@ func main()  {
 			log.Println(err2)
 			continue
 		}
+		log.Printf("Success to add new agent %#v", registerMsgData)
 	}
 }

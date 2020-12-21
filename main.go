@@ -10,6 +10,7 @@ import (
 	agentpb "github.com/headend/iptv-agent-service/proto"
 	"time"
 	myRpc"github.com/headend/share-module/mygrpc/connection"
+	"github.com/headend/share-module/model/warmup"
 )
 
 func main()  {
@@ -51,6 +52,17 @@ func main()  {
 		}
 		if len(res.Agents) > 0 {
 			log.Println("Agent already exists")
+			// tạo message warmup cho agent này
+			warmupMessageString, err9 := makeWarmupMessageString(res)
+			if err9 != nil {
+				log.Println(err9)
+				continue
+			}
+			err10 := pushMessageToWarmup(conf, warmupMessageString)
+			if err10 != nil {
+				log.Println(err10)
+				continue
+			}
 			continue
 		}
 		//
@@ -67,4 +79,24 @@ func main()  {
 		}
 		log.Printf("Success to add new agent %#v", registerMsgData)
 	}
+}
+
+func pushMessageToWarmup(conf configuration.Conf, warmupMessageString string) error {
+	var mq messagequeue.MQ
+	mq.PushMsgByTopic(&conf, warmupMessageString, conf.MQ.WarmUpTopic)
+	return mq.Err
+}
+
+func makeWarmupMessageString(res *agentpb.AgentResponse) (string, error) {
+	var warmupMessage warmup.WarmupMessage
+	var warmupData []warmup.WarmupElement
+	for _, agent := range res.Agents {
+		warupElement := warmup.WarmupElement{
+			IP:     agent.IpControl,
+			Status: true,
+		}
+		warmupData = append(warmupData, warupElement)
+	}
+	warmupMessageString, err9 := warmupMessage.GetJsonString()
+	return warmupMessageString, err9
 }

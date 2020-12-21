@@ -43,11 +43,9 @@ func main()  {
 		json.Unmarshal(msg.Value, &registerMsgData)
 
 		// Check Agent exists
-		c, cancel := context.WithTimeout(context.Background(), time.Second)
-		defer cancel()
-		res, err := (agentClient).Get(c, &agentpb.AgentFilter{IpControl: registerMsgData.IP})
-		if err != nil {
-			log.Println(err)
+		res, err2 := getAgents(agentClient, registerMsgData)
+		if err2 != nil {
+			log.Println(err2)
 			continue
 		}
 		if len(res.Agents) > 0 {
@@ -67,18 +65,32 @@ func main()  {
 		}
 		//
 		// create agent
-		newAgent := agentpb.AgentRequest{
-			IpControl:          registerMsgData.IP,
-			IpReceiveMulticast: "",
-			Status:             true,
-		}
-		_, err2 := (agentClient).Add(c, &newAgent)
-		if err2 != nil {
-			log.Println(err2)
+		err11 := addAgent(registerMsgData, agentClient)
+		if err11 != nil {
+			log.Println(err11)
 			continue
 		}
 		log.Printf("Success to add new agent %#v", registerMsgData)
 	}
+}
+
+func addAgent(registerMsgData *register.Register, agentClient agentpb.AgentCTLServiceClient) error {
+	newAgent := agentpb.AgentRequest{
+		IpControl:          registerMsgData.IP,
+		IpReceiveMulticast: "",
+		Status:             true,
+	}
+	c, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	_, err := (agentClient).Add(c, &newAgent)
+	return err
+}
+
+func getAgents(agentClient agentpb.AgentCTLServiceClient, registerMsgData *register.Register) (res *agentpb.AgentResponse, err error) {
+	c, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	res, err = (agentClient).Get(c, &agentpb.AgentFilter{IpControl: registerMsgData.IP})
+	return res, err
 }
 
 func pushMessageToWarmup(conf configuration.Conf, warmupMessageString string) error {

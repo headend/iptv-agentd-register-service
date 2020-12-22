@@ -38,11 +38,17 @@ github.com/google/go-cmp v0.5.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/uuid v1.1.2/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/headend/iptv-agent-service v0.0.0-20201220144429-f50ba245ec25 h1:3MSKRbcIol3OMLQDoBb42gGkJNls0nWfnXTudPm3/xg=
 github.com/headend/iptv-agent-service v0.0.0-20201220144429-f50ba245ec25/go.mod h1:AzfQn1Rc/fQk7eGrqQkMz52TvMXjUEX+p/cykJJOzfA=
+github.com/headend/iptv-agent-service v0.0.0-20201222144942-416b26e9bfd7 h1:ocInJ3Y273mbtrrUhrXGdYka8LwD2oc5ItQ/1GwiWnA=
+github.com/headend/iptv-agent-service v0.0.0-20201222144942-416b26e9bfd7/go.mod h1:9+pqsfWaQ8VySyJNoaOrfWBg2wnOvn6v1ScIrx4qjs8=
 github.com/headend/share-module v0.0.0-20201220134804-3563da216f2b/go.mod h1:EYbaYXd4gflR+isQ+/4Z0J8zkNeaYJKpOMdQCt1RV8Y=
 github.com/headend/share-module v0.0.0-20201220164436-3f397c07bfcd h1:W3yIHy/Cdr6R2sfNcA+fSBOg9rHzkhFeTwsPMge3w44=
 github.com/headend/share-module v0.0.0-20201220164436-3f397c07bfcd/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
 github.com/headend/share-module v0.0.0-20201221093338-64f7635ff5d4 h1:DSdBBlNabLnRn6jmDSlM2VhxpoEBuo2yS7Dkt535TC4=
 github.com/headend/share-module v0.0.0-20201221093338-64f7635ff5d4/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
+github.com/headend/share-module v0.0.0-20201222091717-a833b8b42d9c h1:ZZbW/MpEJcwOFg7vnfxrA5qL6ASaI1oLh8mca79SOv8=
+github.com/headend/share-module v0.0.0-20201222091717-a833b8b42d9c/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
+github.com/headend/share-module v0.0.0-20201222161010-f033e4fa2cf9 h1:MJIqlHy3tMoMz6kzqTazKPB04/pNkatNnIDjwFuIl18=
+github.com/headend/share-module v0.0.0-20201222161010-f033e4fa2cf9/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
 github.com/jinzhu/gorm v1.9.16/go.mod h1:G3LB3wezTOWM2ITLzPxEXgSkOXAntiLHS7UdBefADcs=
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.0.1/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=

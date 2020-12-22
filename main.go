@@ -14,20 +14,21 @@ import (
 )
 
 func main()  {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	// load config
 	var conf configuration.Conf
 	conf.LoadConf()
 	var mq messagequeue.MQ
-	mq.InitConsumerByTopic(&conf, conf.MQ.WarmUpTopic)
+	mq.InitConsumerByTopic(&conf, conf.MQ.NraTopic)
 	defer mq.CloseConsumer()
 	if mq.Err != nil {
 		log.Print(mq.Err)
 	}
 
-	log.Printf("Listen mesage from %s topic\n",conf.MQ.WarmUpTopic)
+	log.Printf("Listen message from %s topic\n",conf.MQ.NraTopic)
 	var agentConn myRpc.RpcClient
 	//try connect to agent
-	agentConn.InitializeClient(conf.RPC.Agent.Host, string(conf.RPC.Agent.Port))
+	agentConn.InitializeClient(conf.RPC.Agent.Host, conf.RPC.Agent.Port)
 	defer agentConn.Client.Close()
 	//	connect agent services
 	agentClient := agentpb.NewAgentCTLServiceClient(agentConn.Client)
@@ -35,43 +36,53 @@ func main()  {
 		msg, err := mq.Consumer.ReadMessage(-1)
 		if err != nil {
 			log.Printf("Consumer error: %v (%v)\n", err, msg)
-			log.Print("Se you again!")
-			break
+			log.Println("Wait for retry connect")
+			time.Sleep(10 * time.Second)
+			continue
 		}
-		log.Print(msg.Value)
-		var registerMsgData *register.Register
-		json.Unmarshal(msg.Value, &registerMsgData)
 
-		// Check Agent exists
-		res, err2 := getAgents(agentClient, registerMsgData)
-		if err2 != nil {
-			log.Println(err2)
-			continue
-		}
-		if len(res.Agents) > 0 {
-			log.Println("Agent already exists")
-			// tạo message warmup cho agent này
-			warmupMessageString, err9 := makeWarmupMessageString(res.Agents)
-			if err9 != nil {
-				log.Println(err9)
-				continue
+		go func() {
+			if len(msg.Value) == 0 {
+				log.Println("Message empty")
+				return
+			} else {
+				log.Print(msg.Value)
 			}
-			err10 := pushMessageToWarmup(conf, warmupMessageString)
-			if err10 != nil {
-				log.Println(err10)
-				continue
+			var registerMsgData *register.Register
+			json.Unmarshal(msg.Value, &registerMsgData)
+
+			// Check Agent exists
+			res, err2 := getAgents(agentClient, registerMsgData)
+			if err2 != nil {
+				log.Println(err2)
+				return
 			}
-			continue
-		}
-		//
-		// create agent
-		err11 := addAgent(registerMsgData, agentClient)
-		if err11 != nil {
-			log.Println(err11)
-			continue
-		} else {
+			if len(res.Agents) > 0 {
+				log.Println("Agent already exists")
+				// tạo message warmup cho agent này
+				warmupMessageString, err9 := makeWarmupMessageString(res.Agents)
+				if err9 != nil {
+					log.Println(err9)
+					return
+				}
+				err10 := pushMessageToWarmup(conf, warmupMessageString)
+				if err10 != nil {
+					log.Println(err10)
+					return
+				}
+				return
+			}
+			//
+			// create agent
+			err11 := addAgent(registerMsgData, agentClient)
+			if err11 != nil {
+				log.Println(err11)
+				return
+			}
 			log.Printf("Success to add new agent %#v", registerMsgData)
-		}
+			return
+		}()
+
 	}
 }
 
@@ -110,6 +121,9 @@ func makeWarmupMessageString(agents []*agentpb.Agent) (string, error) {
 		}
 		warmupData = append(warmupData, warupElement)
 	}
+	warmupMessage.Data = warmupData
+	warmupMessage.EventTime = time.Now().Unix()
+	warmupMessage.WupType = "event"
 	warmupMessageString, err9 := warmupMessage.GetJsonString()
 	return warmupMessageString, err9
 }

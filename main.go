@@ -28,10 +28,10 @@ func main()  {
 	log.Printf("Listen message from %s topic\n",conf.MQ.NraTopic)
 	var agentConn myRpc.RpcClient
 	//try connect to agent
-	agentConn.InitializeClient(conf.RPC.Agent.Host, conf.RPC.Agent.Port)
+	agentConn.InitializeClient(conf.RPC.Agent.Gateway, conf.RPC.Agent.Port)
 	defer agentConn.Client.Close()
 	//	connect agent services
-	agentClient := agentpb.NewAgentCTLServiceClient(agentConn.Client)
+	agentClient := agentpb.NewAgentServiceClient(agentConn.Client)
 	for {
 		msg, err := mq.Consumer.ReadMessage(-1)
 		if err != nil {
@@ -86,7 +86,7 @@ func main()  {
 	}
 }
 
-func addAgent(registerMsgData *register.Register, agentClient agentpb.AgentCTLServiceClient) error {
+func addAgent(registerMsgData *register.Register, agentClient agentpb.AgentServiceClient) error {
 	newAgent := agentpb.AgentRequest{
 		IpControl:          registerMsgData.IP,
 		IpReceiveMulticast: "",
@@ -98,7 +98,7 @@ func addAgent(registerMsgData *register.Register, agentClient agentpb.AgentCTLSe
 	return err
 }
 
-func getAgents(agentClient agentpb.AgentCTLServiceClient, registerMsgData *register.Register) (res *agentpb.AgentResponse, err error) {
+func getAgents(agentClient agentpb.AgentServiceClient, registerMsgData *register.Register) (res *agentpb.AgentResponse, err error) {
 	c, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 	res, err = (agentClient).Get(c, &agentpb.AgentFilter{IpControl: registerMsgData.IP})

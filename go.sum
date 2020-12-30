@@ -40,6 +40,10 @@ github.com/headend/iptv-agent-service v0.0.0-20201220144429-f50ba245ec25 h1:3MSK
 github.com/headend/iptv-agent-service v0.0.0-20201220144429-f50ba245ec25/go.mod h1:AzfQn1Rc/fQk7eGrqQkMz52TvMXjUEX+p/cykJJOzfA=
 github.com/headend/iptv-agent-service v0.0.0-20201222144942-416b26e9bfd7 h1:ocInJ3Y273mbtrrUhrXGdYka8LwD2oc5ItQ/1GwiWnA=
 github.com/headend/iptv-agent-service v0.0.0-20201222144942-416b26e9bfd7/go.mod h1:9+pqsfWaQ8VySyJNoaOrfWBg2wnOvn6v1ScIrx4qjs8=
+github.com/headend/iptv-agent-service v0.0.0-20201224045003-83923e1a8d28 h1:mcf6bAKYwCXO0GuodN1qIzZwTOfPyKr/958xtbrKsK4=
+github.com/headend/iptv-agent-service v0.0.0-20201224045003-83923e1a8d28/go.mod h1:9+pqsfWaQ8VySyJNoaOrfWBg2wnOvn6v1ScIrx4qjs8=
+github.com/headend/iptv-agent-service v0.0.0-20201226155051-b92c77be368e h1:bqehqfhv+fiCyjeKb/8Gp2/cG4PRLd1nztyZlT3vVgY=
+github.com/headend/iptv-agent-service v0.0.0-20201226155051-b92c77be368e/go.mod h1:tUmaSTRdIDLoeyCitgGb6wQv+HGNHND6UKQ/cOj8u24=
 github.com/headend/share-module v0.0.0-20201220134804-3563da216f2b/go.mod h1:EYbaYXd4gflR+isQ+/4Z0J8zkNeaYJKpOMdQCt1RV8Y=
 github.com/headend/share-module v0.0.0-20201220164436-3f397c07bfcd h1:W3yIHy/Cdr6R2sfNcA+fSBOg9rHzkhFeTwsPMge3w44=
 github.com/headend/share-module v0.0.0-20201220164436-3f397c07bfcd/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
@@ -49,6 +53,10 @@ github.com/headend/share-module v0.0.0-20201222091717-a833b8b42d9c h1:ZZbW/MpEJc
 github.com/headend/share-module v0.0.0-20201222091717-a833b8b42d9c/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
 github.com/headend/share-module v0.0.0-20201222161010-f033e4fa2cf9 h1:MJIqlHy3tMoMz6kzqTazKPB04/pNkatNnIDjwFuIl18=
 github.com/headend/share-module v0.0.0-20201222161010-f033e4fa2cf9/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
+github.com/headend/share-module v0.0.0-20201223101502-8d5946fe882c h1:tzNguAuv+psWttRv56wa8/5777KRWeFanQ52nagku7Q=
+github.com/headend/share-module v0.0.0-20201223101502-8d5946fe882c/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
+github.com/headend/share-module v0.0.0-20201225012418-098bf8bf15bd h1:phVm6O8WR3Imk2GN5lGpCxnYPrplAdCiitbrkMv0svE=
+github.com/headend/share-module v0.0.0-20201225012418-098bf8bf15bd/go.mod h1:vXgMTKM0WciE8f+tARY7tewhwzotSSYM/6AzqYkna3Q=
 github.com/jinzhu/gorm v1.9.16/go.mod h1:G3LB3wezTOWM2ITLzPxEXgSkOXAntiLHS7UdBefADcs=
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.0.1/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
@@ -75,6 +83,8 @@ golang.org/x/net v0.0.0-20200202094626-16171245cfb2/go.mod h1:z5CRVTTTmAJ677TzLL
 golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e/go.mod h1:qpuaurCH72eLCgpAm/N6yyVIVM9cpaDIP3A8BGJEC5A=
 golang.org/x/net v0.0.0-20201216054612-986b41b23924 h1:QsnDpLLOKwHBBDa8nDws4DYNc/ryVW2vCpxCs09d4PY=
 golang.org/x/net v0.0.0-20201216054612-986b41b23924/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
+golang.org/x/net v0.0.0-20201224014010-6772e930b67b h1:iFwSg7t5GZmB/Q5TjiEAsdoLDrdJRC1RiF2WhuV29Qw=
+golang.org/x/net v0.0.0-20201224014010-6772e930b67b/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
@@ -88,6 +98,8 @@ golang.org/x/sys v0.0.0-20201218084310-7d0127a74742 h1:+CBz4km/0KPU3RGTwARGh/noP
 golang.org/x/sys v0.0.0-20201218084310-7d0127a74742/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20201221093633-bc327ba9c2f0 h1:n+DPcgTwkgWzIFpLmoimYR2K2b0Ga5+Os4kayIN0vGo=
 golang.org/x/sys v0.0.0-20201221093633-bc327ba9c2f0/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20201223074533-0d417f636930 h1:vRgIt+nup/B/BwIS0g2oC0haq0iqbV3ZA+u6+0TlNCo=
+golang.org/x/sys v0.0.0-20201223074533-0d417f636930/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
